@@ -4,7 +4,6 @@
     --light-color: #d8d8d8;
     --dark-color: #060606;
     --number-of-cols: 4;
-    
 }
 
 *,
@@ -39,14 +38,4 @@ ul {
 img {
     display: block;
     max-width: 100%;
-}
-
-
-/* Utility classes */
-.sm-hidden {
-    /* display: none; */
-  }
-
-  .overflow-hidden {
-    overflow: hidden;
 }

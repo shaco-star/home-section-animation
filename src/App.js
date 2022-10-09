@@ -1,23 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
+import Description from "./Components/Description";
+import Footer from "./Components/Footer";
+import Navbar from "./Components/Navbar";
 
 function App() {
+  const [state, setState] = useState({ x: "", y: "" });
+  
+
+  function mouseMove(e) {
+    setState((state) => ({
+      ...state,
+      x:  e.clientX,
+      y:  e.clientY,
+    }));
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+    <div className="App" onMouseMove={mouseMove}>
+      <section className="showcase overflow-hidden">
+        <Navbar />
+        <h1 className="title line line-horizontal overflow-hidden">
+          <span className="to-right has-in-common" style={{ "--delay": "0s" }}>
+            Top tier
+          </span>
+        </h1>
+        <h2 className="subtitle overflow-hidden">
+          <span
+            className="to-right has-in-common"
+            style={{ "--delay": "0.15s" }}
+          >
+            Automation
+          </span>
+        </h2>
+        <div className="vertical-text line line-vertical">
+          <div className="vertical-text-inner overflow-hidden">
+            <span
+              className="to-bottom has-in-common"
+              style={{ "--delay": "0.25s" }}
+            >
+              THe future is now
+            </span>
+          </div>
+        </div>
+        <Description />
         <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/"
+          className="cta link scale-rotate has-in-common"
+          style={{ delay: "0.75s" }}
         >
-          Learn React
+          Take <br /> Control
         </a>
-      </header>
+        <Footer mouseMove={state} />
+      </section>
     </div>
   );
 }
